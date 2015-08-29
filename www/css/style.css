@@ -1,0 +1,71 @@
+/* Empty. Add your own CSS if you like */
+@font-face {
+    font-family: circularBold;
+    src: url(../fonts/CircularStd-Bold.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: circularMedium;
+    src: url(../fonts/CircularStd-Medium.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: circularBook;
+    src: url(../fonts/CircularStd-Book.otf) format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Common styles */
+.full-text {
+	overflow: visible !important;
+	white-space: normal !important;
+}
+
+.phone-call-icon {
+	    text-decoration: none;
+    color: grey;
+}
+#autocomplete-list h2 {
+  font-family: circularBook;
+}
+
+#autocomplete-list p {
+  font-family: circularMedium;
+}
+
+.auto-complete-container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    display: none;
+}
+
+
+input.auto-complete[readonly]{
+    background-color: transparent;
+    cursor: text;
+    width: 85%;
+    margin-left: 15px;
+    border: 2px solid #DEDEDE;
+    border-radius: 2px;
+    margin: 0 auto;
+    padding: 25px 16px;
+    font-family: circularMedium;
+    font-size: 1.5em;
+}
+
+#suggestions-tabs .tabs {
+	top: 0px;
+}
+
+#suggestions .scroll {
+	height: 100%;
+}

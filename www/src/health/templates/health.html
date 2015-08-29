@@ -1,0 +1,20 @@
+<ion-view view-title="Health for all">
+	<ion-content>
+		<form name="illnessForm" no-validate ng-submit="vm.getHelp(illness, illnessForm.$valid)">
+
+		<auto-complete placeholder="What do you suffer from?" required 
+		 ng-model="illness.symptom" 
+		 search-placeholder="Search for a symptom" 
+		 label-cancel="Back"
+		 icon="ion-medkit" 
+		data="{{vm.illness}}" 
+		repeat-data=""
+		list-data="" list-data-main=""
+		list-data-sub=""
+		has-real-time-data="false"></auto-complete>
+
+		<input type="submit" class="button" value="Submit" />
+	</form>
+
+	</ion-content>
+</ion-view>
