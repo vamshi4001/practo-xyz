@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view view-title="Health Help">
 	<ion-content>
 		<div class="big-img"></div>
 		<form name="illnessForm" no-validate ng-submit="vm.getHelp(illness, illnessForm.$valid)">
@@ -28,7 +28,7 @@
 				 <i class="icon ion-android-microphone fab-btn-icon" ng-click="vm.recognizeSpeech()"></i>  
 			</div>
 			<div class="col text-center">
-				<i class="icon ion-android-image fab-btn-icon"></i> 
+				<i ui-sref="image" class="icon ion-android-image fab-btn-icon"></i> 
 			</div>
 		</div>
 	</ion-content>

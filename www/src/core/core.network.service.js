@@ -18,7 +18,6 @@
                 else if(networkState == "unknown"){return true;}
                 else if(networkState == "ethernet"){return true;}
                 else{return false;}
-                return false;
             }
         }
     

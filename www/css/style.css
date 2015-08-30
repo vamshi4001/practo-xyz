@@ -25,8 +25,31 @@
 	overflow: visible !important;
 	white-space: normal !important;
 }
+
+.has-tabs-top {
+    top: 108px !important;
+}
 .has-header {
     top: 60px;
+}
+
+.tabs-top > .tabs, .tabs.tabs-top {
+    top: 60px;
+    padding-top: 0;
+    background-position: bottom;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+}
+
+.app-header-bar .button {
+    color: white !important;
+}
+
+.platform-android .bar .title {
+    font-size: 19px;
+    line-height: 55px !important;
+    color: white;
+    font-family: circularBold;
 }
 
 .phone-call-icon {
@@ -41,6 +64,10 @@
     background-color: #40A1D7;
     background: #40A1D7;
     height: 60px;
+}
+
+.app-header-bar button {
+    color: white;
 }
 
 .whiteframe-z1 {
@@ -117,4 +144,21 @@ input.auto-complete[readonly]{
 
 #suggestions .scroll {
 	height: 100%;
+}
+
+.image-query-img{
+    
+}
+.image-col-50{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.tabs a.tab-item{
+    font-family: circularMedium;
+}
+.list .item h2{
+    font-family: circularMedium;
+}
+.list .item p, .list .item, .item p{
+    font-family: circularBook;
 }

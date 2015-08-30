@@ -4,10 +4,12 @@
 		.module("health")
 		.controller("HealthCtrl", HealthCtrl);
 
-	function HealthCtrl(illnessData, $log, $state, networkService) {
+	function HealthCtrl(illnessData, $log, $state, networkService, $window, $timeout, $ionicPlatform) {
 		var vm = this;
+		vm.recognizeSpeech = recognizeSpeech;
 		vm.illness = illnessData.illness;
 		vm.getHelp = getHelp;	
+		
   		function getHelp(data, validity) {
   			var master = angular.copy(data);
   			if(validity && networkService.getConnectionStatus()) {  				
@@ -28,12 +30,18 @@
 	  			}
   			}
   		}
+
   		function recognizeSpeech() {
             var maxMatches = 5;
             var promptString = "Speak now"; // optional
             var language = "en-US";                     // optional
             $window.plugins.speechrecognizer.startRecognize(function(result){
-                	console.log(result)
+            	
+            	var master = {
+            		'symptom': result[0]
+            	};
+           		getHelp(master, true);
+
             }, function(errorMessage){
                 console.log("Error message: " + errorMessage);
             }, maxMatches, promptString, language);

@@ -18,26 +18,23 @@
 			return $q.reject(err);
 		} 
 
-		function getDoctors() {
-			var queryData = ["pain","sugar","bp","burn","acne","fever","cold","cough","asthma","tb"];
+		function getDoctors(query) {
 			var docType = "general-physician";
-			queryData.forEach(function(v){
-				if(v=="pain" || v=="fever" || v=="cold" || v=="cough"){
+				if(query=="pain" || query=="fever" || query=="cold" || query=="cough"){
 					docType = "general-physician";
 				}
-				else if( v== 'sugar'){
+				else if( query== 'sugar'){
 					docType = "Diabetologist"
 				}
-				else if( v== 'acne' || v=="burn"){
+				else if( query== 'acne' || query=="burn"){
 					docType = "Dermatologist";
 				}
-				else if(v=="asthma" || v=="tb"){
+				else if(query=="asthma" || query=="tb"){
 					docType = "Pulmonologist";
 				}
-				else if(v=="bp"){
+				else if(query=="bp"){
 					docType = "Cardiologist";
 				}
-			})
 			return dataService.get("https://api.practo.com/search/?city=bangalore&locality=richmond-town&speciality="+docType+"&searchfor=specialization&sort_by=practo_ranking", true)
 				.then(success).catch(failure);
 		}
@@ -48,7 +45,8 @@
 		}
 
 		function getSuggestions(query) {
-			return $q.all([getMeds(query), getDoctors()]);
+			console.log(query);
+			return $q.all([getMeds(query), getDoctors(query)]);
 		}
 	}
 })();

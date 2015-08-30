@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 	angular
-		.module("practoxz", ['ionic', 'core', 'health', 'suggestions'])
+		.module("practoxz", ['ionic', 'core', 'health', 'suggestions', 'image-query'])
 		.run(run);
 
 	function run($ionicPlatform, $rootScope) {

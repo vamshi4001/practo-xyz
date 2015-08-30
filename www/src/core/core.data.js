@@ -10,14 +10,17 @@
 		};
 
 		function success(data) {
+			$ionicLoading.hide();
 			return $q.resolve(data);
 		}
 
 		function failure(err) {
+			$ionicLoading.hide();
 			return $q.reject(err);
 		}
 
 		function get(address, hasheaders) {
+			$ionicLoading.show();
 			var config = null;
 			
 			if(hasheaders === true) {

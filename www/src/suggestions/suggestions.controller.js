@@ -48,7 +48,7 @@
 			}
 		}
 
-		solList('med');
+		solList('docs');
 	}
 
 })();

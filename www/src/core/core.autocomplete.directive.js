@@ -33,7 +33,7 @@
                             '</div>',
                             '<ion-content class="has-header has-header">',
                                 '<ion-list>',
-                                    '<ion-item ng-repeat="location in locations track by $index" type="item-text-wrap" ng-click="selectLocation(location)" class="item item-icon-left" id="autocomplete-list">',
+                                    '<ion-item ng-repeat="location in locations |  filter:searchQuery" type="item-text-wrap" ng-click="selectLocation(location)" class="item item-icon-left" id="autocomplete-list">',
                                         '<i class="icon  '+ attrs.icon + '"></i>',
                                         '<h2>{{location}}</h2>',
 

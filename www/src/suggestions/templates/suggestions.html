@@ -1,12 +1,12 @@
 <ion-view view-title="Suggestions" id="suggestions">
 <div class="tabs-striped tabs-top">
     <div class="tabs">
-      <a class="tab-item" ng-click="vm.solList('med')">
-        MEDICINES
-      </a>
-      <a class="tab-item" ng-click="vm.solList('doc')">
+      <a class="tab-item" ng-class="{'active':vm.docs}" ng-click="vm.solList('doc')">
         DOCTORS
       </a>
+      <a class="tab-item" ng-class="{'active':vm.meds}" ng-click="vm.solList('med')">
+        MEDICINES
+      </a>      
     </div>
   </div>
 	<ion-content class="has-tabs-top">
@@ -20,7 +20,7 @@
       <ion-item ng-repeat="sol in vm.sols" class="icon item-icon-right">
         <a href="tel:9242310583" class="icon ion-android-call phone-call-icon"></a>
         <h2>{{sol.doctor_name}}</h2>
-        <p class="full-text">Suggestions:  <span ng-repeat="sp in sol.specialties">{{sp.specialty}} 
+        <p class="full-text">Specialization:  <span ng-repeat="sp in sol.specialties">{{sp.specialty}} 
             <span ng-if="!$last">,</span> </span>
         </p>
 
