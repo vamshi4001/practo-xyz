@@ -1,21 +1,35 @@
-<ion-view view-title="Health for all">
+<ion-view>
 	<ion-content>
+		<div class="big-img"></div>
 		<form name="illnessForm" no-validate ng-submit="vm.getHelp(illness, illnessForm.$valid)">
+			<div class="row no-padding">
+				<div class="col col-80 no-padding">
+					<auto-complete placeholder="What do you suffer from?" required 
+			 ng-model="illness.symptom" 
+			 search-placeholder="Search for a symptom" 
+			 label-cancel="Back"
+			 icon="ion-medkit" 
+			data="{{vm.illness}}" 
+			repeat-data=""
+			list-data="" list-data-main=""
+			list-data-sub=""
+			has-real-time-data="false"></auto-complete>
 
-		<auto-complete placeholder="What do you suffer from?" required 
-		 ng-model="illness.symptom" 
-		 search-placeholder="Search for a symptom" 
-		 label-cancel="Back"
-		 icon="ion-medkit" 
-		data="{{vm.illness}}" 
-		repeat-data=""
-		list-data="" list-data-main=""
-		list-data-sub=""
-		has-real-time-data="false"></auto-complete>
+				</div>
 
-		<input type="submit" class="button" value="Submit" />
-	</form>
+				<div class="col no-padding submit-btn text-center">
+				<button type="submit" class="button button-clear icon ion-android-send"></button>
+				</div>
+			</div>
+		</form>
 
-<button class="button button-block" ng-click="recognizeSpeech()">Speack</button>
+		<div class="row" style="margin-top: 7em;">
+			<div class="col text-center">
+				 <i class="icon ion-android-microphone fab-btn-icon" ng-click="vm.recognizeSpeech()"></i>  
+			</div>
+			<div class="col text-center">
+				<i class="icon ion-android-image fab-btn-icon"></i> 
+			</div>
+		</div>
 	</ion-content>
 </ion-view>

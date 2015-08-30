@@ -18,18 +18,6 @@
 			      // org.apache.cordova.statusbar required
 			      StatusBar.styleLightContent();
 			    }
-
-			    $rootScope.recognizeSpeech = function() {
-                var maxMatches = 5;
-                var promptString = "Speak now"; // optional
-                var language = "en-US";                     // optional
-                window.plugins.speechrecognizer.startRecognize(function(result){
-                	console.log(result)
-                    alert(result);
-                }, function(errorMessage){
-                    console.log("Error message: " + errorMessage);
-                }, maxMatches, promptString, language);
-            }
 			 });
 		});
 	}
