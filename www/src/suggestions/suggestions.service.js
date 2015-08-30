@@ -19,7 +19,26 @@
 		} 
 
 		function getDoctors() {
-			return dataService.get("https://api.practo.com/search/?city=bangalore&locality=richmond-town&speciality=general-physician&searchfor=specialization&sort_by=practo_ranking", true)
+			var queryData = ["pain","sugar","bp","burn","acne","fever","cold","cough","asthma","tb"];
+			var docType = "general-physician";
+			queryData.forEach(function(v){
+				if(v=="pain" || v=="fever" || v=="cold" || v=="cough"){
+					docType = "general-physician";
+				}
+				else if( v== 'sugar'){
+					docType = "Diabetologist"
+				}
+				else if( v== 'acne' || v=="burn"){
+					docType = "Dermatologist";
+				}
+				else if(v=="asthma" || v=="tb"){
+					docType = "Pulmonologist";
+				}
+				else if(v=="bp"){
+					docType = "Cardiologist";
+				}
+			})
+			return dataService.get("https://api.practo.com/search/?city=bangalore&locality=richmond-town&speciality="+docType+"&searchfor=specialization&sort_by=practo_ranking", true)
 				.then(success).catch(failure);
 		}
 
