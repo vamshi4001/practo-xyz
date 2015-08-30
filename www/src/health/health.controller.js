@@ -9,8 +9,8 @@
 		vm.illness = illnessData.illness;
 		vm.getHelp = getHelp;	
   		function getHelp(data, validity) {
-  			if(validity && networkService.getConnectionStatus()) {
-  				var master = angular.copy(data);
+  			var master = angular.copy(data);
+  			if(validity && networkService.getConnectionStatus()) {  				
   				try {
   					$state.go("suggestions", {'type':master.symptom});
   				} catch(e) {
@@ -19,7 +19,7 @@
   			}
   			else if(validity && !networkService.getConnectionStatus()){
   				if(SMS) {
-	  				SMS.sendSMS("51115", "@practo "+master.symptom, function(){
+	  				SMS.sendSMS("51115", "@practo "+ master.symptom, function(){
   						console.log("message sending successful");
 	  				},
 	  				function(){
