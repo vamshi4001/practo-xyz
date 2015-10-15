@@ -4,13 +4,13 @@
 		.module("health")
 		.controller("HealthCtrl", HealthCtrl);
 
-	function HealthCtrl(illnessData, $log, $state, networkService, $window, $timeout, $ionicPlatform) {
+	function HealthCtrl(illnessData, $log, $scope, $state, networkService, $window, $timeout, $ionicPlatform) {
 		var vm = this;
     vm.city="Bangalore";
 		vm.recognizeSpeech = recognizeSpeech;
 		vm.illness = illnessData.illness;
     vm.cities = Object.keys(illnessData.cities);
-    vm.alldata = illnessData.cities[vm.city].localities;
+    vm.locales = illnessData.cities[vm.city].localities;
 		vm.getHelp = getHelp;	
 		
   		function getHelp(data, validity) {
@@ -49,6 +49,12 @@
                 console.log("Error message: " + errorMessage);
             }, maxMatches, promptString, language);
         }
+
+      $scope.$watch("vm.illness.city",function(data){
+        if(data !== undefined) {
+          $scope.$broadcast("updateLocalities", { 'localities': illnessData.cities[data].localities });
+        }
+      })
 	}
 
 })();
