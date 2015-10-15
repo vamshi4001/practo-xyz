@@ -32,8 +32,15 @@
                                 '</button>',
                             '</div>',
                             '<ion-content class="has-header has-header">',
+                                '<ion-list ng-if="' + attrs.locales +'">',
+                                    '<ion-item ng-repeat="location in localities track by [$index] |  filter:searchQuery:strict" type="item-text-wrap" ng-click="selectLocation(location)" class="item item-icon-left" id="autocomplete-list">',
+                                        '<i class="icon  '+ attrs.icon + '"></i>',
+                                        '<h2>{{location}}</h2>',
+
+                                    '</ion-item>',
+                                '</ion-list>',
                                 '<ion-list>',
-                                    '<ion-item ng-repeat="location in locations |  filter:searchQuery" type="item-text-wrap" ng-click="selectLocation(location)" class="item item-icon-left" id="autocomplete-list">',
+                                    '<ion-item ng-repeat="location in locations |  filter:searchQuery:strict" type="item-text-wrap" ng-click="selectLocation(location)" class="item item-icon-left" id="autocomplete-list">',
                                         '<i class="icon  '+ attrs.icon + '"></i>',
                                         '<h2>{{location}}</h2>',
 
@@ -49,13 +56,15 @@
                         appendTo: $document[0].body
                     });
 
+                    scope.locations = JSON.parse(attrs.data);
+
                     popupPromise.then(function(el){
                         var searchInputElement = angular.element(el.element.find('input'));
 
                         scope.selectLocation = function(location){
                             ngModel.$setViewValue(location);
-                            
                             ngModel.$render();
+
                             el.element.css('display', 'none');
                             $ionicBackdrop.release();
 
@@ -63,42 +72,13 @@
                                 unbindBackButtonAction();
                                 unbindBackButtonAction = null;
                             }
-                        };
+                            
+                        };  
 
-                        if(attrs.hasRealTimeData === 'true') {
-                           scope.$watch('searchQuery', function(query){
-                            if (searchEventTimeout) $timeout.cancel(searchEventTimeout);
-                            searchEventTimeout = $timeout(function() {
-                                if(!query) return;
-                                if(query.length < 1);
+                        scope.$on("updateLocalities", function(e, data) {
+                            scope.localities = (data.localities);
+                        }) ;
 
-                                // startAMeetService.getPlaces(query)
-                                //     .then(function(resp) {
-                                //         //scope.$apply(function(){
-                                //             scope.locations = {};
-                                            
-                                //             scope.locations = resp.data;
-                                //             console.log(scope.locations.results)
-                                        
-                                //     })
-                                // geocoder.geocode(req, function(results, status) {
-                                //     if (status == google.maps.GeocoderStatus.OK) {
-                                //         scope.$apply(function(){
-                                //             scope.locations = results;
-                                //         });
-                                //     } else {
-                                //         // @TODO: Figure out what to do when the geocoding fails
-                                //     }
-                                // });
-
-
-                            }, 350); // we're throttling the input by 350ms to be nice to google's API
-                        });
-                        }
-                        else {
-                            scope.locations = JSON.parse(attrs.data);
-                        }
-                        
 
                         var closeOnBackButton = function(e){
                             e.preventDefault();
