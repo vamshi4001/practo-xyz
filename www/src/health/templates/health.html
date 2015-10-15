@@ -1,50 +1,40 @@
 <ion-view view-title="">
 	<ion-content>
 		<div class="big-img"></div>
-		<form name="illnessForm" no-validate ng-submit="vm.getHelp(illness, illnessForm.$valid)">
+		<form name="illnessForm" no-validate 
+		ng-submit="vm.getHelp(vm.illness,illnessForm.$valid)">
 			<div class="row no-padding">
 				<div class="col col-100 no-padding">
-					<auto-complete placeholder="How can we help you?" required 
-			 				ng-model="illness.symptom" 
+					<auto-complete placeholder="How can we help you?"  
+			 				ng-model="vm.illness.symptom" 
 			 				search-placeholder="Search for a symptom" 
 		 					label-cancel="Back"
 			 				icon="ion-medkit" 
-							data="{{vm.illness}}" 
-							repeat-data=""
-							list-data="" list-data-main=""
-							list-data-sub=""
-							has-real-time-data="false">
+							data="{{vm.illness}}">
 					</auto-complete>
 				</div>				
 			</div>
 			<div class="row no-padding">
 				<div class="col col-100 no-padding">
-					<auto-complete placeholder="Where city are you in?" required 
-			 				ng-model="illness.city" 
+					<auto-complete placeholder="Where city are you in?"  
+			 				ng-model="vm.illness.city" 
 			 				search-placeholder="Search for a city" 
 		 					label-cancel="Back"
-			 				icon="ion-medkit" 
-							data="{{vm.cities}}" 
-							repeat-data=""
-							list-data="" list-data-main=""
-							list-data-sub=""
-							has-real-time-data="false" ng-change="onSelectInput(illness.city)">
+			 				icon="ion-android-pin" 
+							data="{{vm.cities}}">
 					</auto-complete>
 				</div>
 			</div>
 			<div class="row no-padding">
 				<div class="col col-80 no-padding">
-					<auto-complete placeholder="Where are you located?" required 
-			 				ng-model="illness.locality" 
+					<auto-complete placeholder="Where are you located?"  
+			 				ng-model="vm.illness.locality" 
 			 				search-placeholder="Search for a locality" 
 		 					label-cancel="Back"
-			 				icon="ion-medkit" 
-							data="{{vm.alldata}}" 
-							repeat-data=""
-							list-data="" list-data-main=""
-							list-data-sub=""
-							selected-cty="illness.city"
-							has-real-time-data="false">
+			 				icon="ion-android-pin" 
+							data="{{vm.locales}}" 
+							locales="true"
+							>
 					</auto-complete>
 				</div>
 				<div class="col no-padding submit-btn text-center">
