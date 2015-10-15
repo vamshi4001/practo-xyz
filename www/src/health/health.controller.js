@@ -6,15 +6,18 @@
 
 	function HealthCtrl(illnessData, $log, $state, networkService, $window, $timeout, $ionicPlatform) {
 		var vm = this;
+    vm.city="Bangalore";
 		vm.recognizeSpeech = recognizeSpeech;
 		vm.illness = illnessData.illness;
+    vm.cities = Object.keys(illnessData.cities);
+    vm.alldata = illnessData.cities[vm.city].localities;
 		vm.getHelp = getHelp;	
 		
   		function getHelp(data, validity) {
-  			var master = angular.copy(data);
+        var master = angular.copy(data);
   			if(validity && networkService.getConnectionStatus()) {  				
   				try {
-  					$state.go("suggestions", {'type':master.symptom});
+  					$state.go("suggestions", {'type':master.symptom,"locality":master.locality});
   				} catch(e) {
   					console.log(e);
   				}

@@ -15,13 +15,14 @@
             {
                 state: 'suggestions',
                 config: {
-                    url: '/suggestions/:type',
+                    url: '/suggestions/:type/:locality',
                     templateUrl: 'src/suggestions/templates/suggestions.html',
                     controller: 'SuggestionsCtrl as vm',
                     resolve: {
                         suggestedData: function($stateParams, suggestionsService) {
                             var type = $stateParams.type;
-                            return suggestionsService.getSuggestions(type);
+                            var locality = $stateParams.locality;
+                            return suggestionsService.getSuggestions(type, locality);
                         }
                     },
                     title: 'Suggestions'

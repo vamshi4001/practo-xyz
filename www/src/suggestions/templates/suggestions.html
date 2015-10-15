@@ -18,7 +18,7 @@
 
     <ion-list ng-if="vm.docs == true && vm.meds == false">
       <ion-item ng-repeat="sol in vm.sols" class="icon item-icon-right">
-        <a href="tel:9242310583" class="icon ion-android-call phone-call-icon"></a>
+        <!-- <a href="tel:9242310583" class="icon ion-android-call phone-call-icon"></a> -->
         <h2>{{sol.doctor_name}}</h2>
         <p class="full-text">Specialization:  <span ng-repeat="sp in sol.specialties">{{sp.specialty}} 
             <span ng-if="!$last">,</span> </span>

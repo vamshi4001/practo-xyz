@@ -53,7 +53,6 @@
                         var searchInputElement = angular.element(el.element.find('input'));
 
                         scope.selectLocation = function(location){
-                            
                             ngModel.$setViewValue(location);
                             
                             ngModel.$render();
